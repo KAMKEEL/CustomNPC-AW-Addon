@@ -22,7 +22,7 @@ import riskyken.armourersWorkshop.common.skin.data.Skin;
 @Mixin(AbstractModelSkin.class)
 public abstract class MixinAbstractModelSkin extends ModelBiped {
 
-    @Inject(method = "render(Lnet/minecraft/entity/Entity;FFFFFF)V", at=@At(value = "INVOKE", target = "Lnet/minecraft/client/model/ModelBiped;setRotationAngles(FFFFFFLnet/minecraft/entity/Entity;)V", shift = At.Shift.AFTER), remap = false)
+    @Inject(method = "render(Lnet/minecraft/entity/Entity;FFFFFF)V", at=@At(value = "INVOKE", target = "Lnet/minecraft/client/model/ModelBiped;setRotationAngles(FFFFFFLnet/minecraft/entity/Entity;)V", shift = At.Shift.AFTER))
     public void render(Entity entity, float limb1, float limb2, float limb3, float headY, float headX, float scale, CallbackInfo ci){
         if(ClientEventHandler.renderingNpc != null){
             if(ClientEventHandler.renderingNpc.display.animationData.isActive()){
