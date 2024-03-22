@@ -10,6 +10,7 @@ import noppes.npcs.client.ClientEventHandler;
 import noppes.npcs.controllers.data.FramePart;
 import noppes.npcs.entity.EntityCustomNpc;
 import noppes.npcs.entity.data.ModelScalePart;
+import org.lwjgl.opengl.GL11;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -101,7 +102,11 @@ public abstract class MixinAbstractModelSkin extends ModelBiped {
     private void customNPC_AWAddon$setAnimationRotation(IFrame frame){
         IFramePart[] parts = frame.getParts();
         for(IFramePart part : parts){
-            customNPC_AWAddon$setPartRotation(customNPC_AWAddon$getRendererByPartId(part.getPartId()), (FramePart) part);
+            ModelRenderer modelRenderer = customNPC_AWAddon$getRendererByPartId(part.getPartId());
+            if(modelRenderer == null)
+                continue;
+
+            customNPC_AWAddon$setPartRotation(modelRenderer, (FramePart) part);
         }
     }
 

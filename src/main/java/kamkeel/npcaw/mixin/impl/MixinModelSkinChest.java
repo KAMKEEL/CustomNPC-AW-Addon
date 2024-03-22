@@ -42,7 +42,6 @@ public abstract class MixinModelSkinChest extends AbstractModelSkin {
             GL11.glRotatef((float)Math.toDegrees((double)this.bipedBody.rotateAngleY), 0.0F, 1.0F, 0.0F);
             GL11.glRotatef((float)Math.toDegrees((double)this.bipedBody.rotateAngleX), 1.0F, 0.0F, 0.0F);
 
-            GL11.glTranslatef(0, 0, 0);
             GL11.glScalef(body.scaleX, body.scaleY, body.scaleZ);
         }
     }
