@@ -31,12 +31,12 @@ public abstract class MixinModelSkinFeet extends AbstractModelSkin {
         this.customNPC_AWAddon$renderingEntity = null;
     }
 
-    @Inject(method = "renderRightFoot", at = @At(value = "INVOKE", target = "Lorg/lwjgl/opengl/GL11;glPushMatrix()V", ordinal = 0, shift = At.Shift.AFTER), remap = false)
+    @Inject(method = "renderRightFoot", at = @At(value = "INVOKE", target = "Lorg/lwjgl/opengl/GL11;glRotatef(FFFF)V", ordinal = 0, shift = At.Shift.BEFORE), remap = false)
     public void renderRightLegTranslate(SkinPart part, float scale, ISkinDye skinDye, byte[] extraColour, boolean itemRender, double distance, boolean doLodLoading, CallbackInfo ci) {
         if(customNPC_AWAddon$renderingEntity instanceof EntityCustomNpc npc){
             ModelScalePart legs = npc.modelData.modelScale.legs;
             float x = (1 - legs.scaleX) * 0.125f;
-            float y = npc.modelData.getBodyY() + (1 - legs.scaleY) * -0.1f;
+            float y = npc.modelData.getLegsY();
             GL11.glTranslatef(x, y, 0);
         }
     }
@@ -55,7 +55,7 @@ public abstract class MixinModelSkinFeet extends AbstractModelSkin {
         if(customNPC_AWAddon$renderingEntity instanceof EntityCustomNpc npc){
             ModelScalePart legs = npc.modelData.modelScale.legs;
             float x = (1 - legs.scaleX) * 0.125f;
-            float y = npc.modelData.getBodyY() + (1 - legs.scaleY) * -0.1f;
+            float y = npc.modelData.getLegsY();
             GL11.glTranslatef(-x, y, 0);
         }
     }

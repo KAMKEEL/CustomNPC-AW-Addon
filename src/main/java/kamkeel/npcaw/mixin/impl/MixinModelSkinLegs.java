@@ -55,7 +55,7 @@ public abstract class MixinModelSkinLegs extends AbstractModelSkin {
         if(customNPC_AWAddon$renderingEntity instanceof EntityCustomNpc npc){
             ModelScalePart legs = npc.modelData.modelScale.legs;
             float x = (1 - legs.scaleX) * 0.125f;
-            float y = npc.modelData.getBodyY() + (1 - legs.scaleY) * -0.1f;
+            float y = npc.modelData.getLegsY();
             GL11.glTranslatef(x, y, 0);
         }
     }
@@ -74,7 +74,7 @@ public abstract class MixinModelSkinLegs extends AbstractModelSkin {
         if(customNPC_AWAddon$renderingEntity instanceof EntityCustomNpc npc){
             ModelScalePart legs = npc.modelData.modelScale.legs;
             float x = (1 - legs.scaleX) * 0.125f;
-            float y = npc.modelData.getBodyY() + (1 - legs.scaleY) * -0.1f;
+            float y = npc.modelData.getLegsY();
             GL11.glTranslatef(-x, y, 0);
         }
     }
