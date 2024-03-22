@@ -7,7 +7,8 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 @Mod(modid = "npcaw",
     name = "CustomNPC+ AW Addon",
     version = "1.1",
-    dependencies = "after:customnpcs;after:armourersWorkshop;")
+    dependencies = "after:customnpcs;after:armourersWorkshop;",
+    acceptableRemoteVersions = "*")
 public class CustomNpcPlusAW {
 
     @SidedProxy(clientSide = "kamkeel.npcaw.client.ClientProxy", serverSide = "kamkeel.npcaw.CommonProxy")
