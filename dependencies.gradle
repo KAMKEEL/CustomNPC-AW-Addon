@@ -35,6 +35,6 @@
  */
 dependencies {
     devOnlyNonPublishable(rfg.deobf(project.files("lib/Armourers-Workshop-1.7.10-0.48.5.jar")))
-    implementation name: "CustomNPC-Plus-1.9"
+    implementation name: "CustomNPC-Plus-1.10-beta1"
     // implementation name: "Armourers-Workshop-1.7.10-0.48.5"
 }
