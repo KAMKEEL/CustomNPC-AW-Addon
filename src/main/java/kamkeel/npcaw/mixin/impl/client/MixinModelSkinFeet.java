@@ -1,4 +1,4 @@
-package kamkeel.npcaw.mixin.impl;
+package kamkeel.npcaw.mixin.impl.client;
 
 import net.minecraft.entity.Entity;
 import noppes.npcs.entity.EntityCustomNpc;
@@ -11,13 +11,12 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import riskyken.armourersWorkshop.api.common.skin.data.ISkinDye;
 import riskyken.armourersWorkshop.client.model.skin.AbstractModelSkin;
-import riskyken.armourersWorkshop.client.model.skin.ModelSkinChest;
-import riskyken.armourersWorkshop.client.model.skin.ModelSkinLegs;
+import riskyken.armourersWorkshop.client.model.skin.ModelSkinFeet;
 import riskyken.armourersWorkshop.common.skin.data.Skin;
 import riskyken.armourersWorkshop.common.skin.data.SkinPart;
 
-@Mixin(ModelSkinLegs.class)
-public abstract class MixinModelSkinLegs extends AbstractModelSkin {
+@Mixin(ModelSkinFeet.class)
+public abstract class MixinModelSkinFeet extends AbstractModelSkin {
 
     @Unique
     private Entity customNPC_AWAddon$renderingEntity = null;
@@ -32,25 +31,7 @@ public abstract class MixinModelSkinLegs extends AbstractModelSkin {
         this.customNPC_AWAddon$renderingEntity = null;
     }
 
-    @Inject(method = "renderSkirt", at = @At(value = "INVOKE", target = "Lorg/lwjgl/opengl/GL11;glPushMatrix()V", ordinal = 0, shift = At.Shift.AFTER), remap = false)
-    public void renderSkirtTranslate(SkinPart part, float scale, ISkinDye skinDye, byte[] extraColour, boolean itemRender, double distance, boolean doLodLoading, CallbackInfo ci) {
-        if(customNPC_AWAddon$renderingEntity instanceof EntityCustomNpc npc){
-            ModelScalePart legs = npc.modelData.modelScale.legs;
-            float y = npc.modelData.getLegsY();
-            GL11.glTranslatef(0, y, 0);
-            GL11.glScalef(legs.scaleX, legs.scaleY, legs.scaleZ);
-        }
-    }
-
-    @Inject(method = "renderSkirt", at = @At(value = "INVOKE", target = "Lriskyken/armourersWorkshop/client/model/skin/ModelSkinLegs;renderPart(Lriskyken/armourersWorkshop/common/skin/data/SkinPart;FLriskyken/armourersWorkshop/api/common/skin/data/ISkinDye;[BDZ)V", shift = At.Shift.BEFORE), remap = false)
-    public void renderSkirtScale(SkinPart part, float scale, ISkinDye skinDye, byte[] extraColour, boolean itemRender, double distance, boolean doLodLoading, CallbackInfo ci) {
-        if(customNPC_AWAddon$renderingEntity instanceof EntityCustomNpc npc){
-            ModelScalePart legs = npc.modelData.modelScale.legs;
-            GL11.glScalef(legs.scaleX, legs.scaleY, legs.scaleZ);
-        }
-    }
-
-    @Inject(method = "renderRightLeg", at = @At(value = "INVOKE", target = "Lorg/lwjgl/opengl/GL11;glPushMatrix()V", ordinal = 0, shift = At.Shift.AFTER), remap = false)
+    @Inject(method = "renderRightFoot", at = @At(value = "INVOKE", target = "Lorg/lwjgl/opengl/GL11;glRotatef(FFFF)V", ordinal = 0, shift = At.Shift.BEFORE), remap = false)
     public void renderRightLegTranslate(SkinPart part, float scale, ISkinDye skinDye, byte[] extraColour, boolean itemRender, double distance, boolean doLodLoading, CallbackInfo ci) {
         if(customNPC_AWAddon$renderingEntity instanceof EntityCustomNpc npc){
             ModelScalePart legs = npc.modelData.modelScale.legs;
@@ -60,7 +41,7 @@ public abstract class MixinModelSkinLegs extends AbstractModelSkin {
         }
     }
 
-    @Inject(method = "renderRightLeg", at = @At(value = "INVOKE", target = "Lorg/lwjgl/opengl/GL11;glRotatef(FFFF)V", ordinal = 2, shift = At.Shift.AFTER), remap = false)
+    @Inject(method = "renderRightFoot", at = @At(value = "INVOKE", target = "Lorg/lwjgl/opengl/GL11;glRotatef(FFFF)V", ordinal = 2, shift = At.Shift.AFTER), remap = false)
     public void renderRightLegScale(SkinPart part, float scale, ISkinDye skinDye, byte[] extraColour, boolean itemRender, double distance, boolean doLodLoading, CallbackInfo ci) {
         if(customNPC_AWAddon$renderingEntity instanceof EntityCustomNpc npc){
             ModelScalePart legs = npc.modelData.modelScale.legs;
@@ -69,7 +50,7 @@ public abstract class MixinModelSkinLegs extends AbstractModelSkin {
     }
 
 
-    @Inject(method = "renderLeftLeg", at = @At(value = "INVOKE", target = "Lorg/lwjgl/opengl/GL11;glPushMatrix()V", ordinal = 0, shift = At.Shift.AFTER), remap = false)
+    @Inject(method = "renderLeftFoot", at = @At(value = "INVOKE", target = "Lorg/lwjgl/opengl/GL11;glPushMatrix()V", ordinal = 0, shift = At.Shift.AFTER), remap = false)
     public void renderLeftLegTranslate(SkinPart part, float scale, ISkinDye skinDye, byte[] extraColour, boolean itemRender, double distance, boolean doLodLoading, CallbackInfo ci) {
         if(customNPC_AWAddon$renderingEntity instanceof EntityCustomNpc npc){
             ModelScalePart legs = npc.modelData.modelScale.legs;
@@ -79,7 +60,7 @@ public abstract class MixinModelSkinLegs extends AbstractModelSkin {
         }
     }
 
-    @Inject(method = "renderLeftLeg", at = @At(value = "INVOKE", target = "Lorg/lwjgl/opengl/GL11;glRotatef(FFFF)V", ordinal = 2, shift = At.Shift.AFTER), remap = false)
+    @Inject(method = "renderLeftFoot", at = @At(value = "INVOKE", target = "Lorg/lwjgl/opengl/GL11;glRotatef(FFFF)V", ordinal = 2, shift = At.Shift.AFTER), remap = false)
     public void renderLeftLegScale(SkinPart part, float scale, ISkinDye skinDye, byte[] extraColour, boolean itemRender, double distance, boolean doLodLoading, CallbackInfo ci) {
         if(customNPC_AWAddon$renderingEntity instanceof EntityCustomNpc npc){
             ModelScalePart legs = npc.modelData.modelScale.legs;

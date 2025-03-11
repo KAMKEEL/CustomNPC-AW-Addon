@@ -1,4 +1,4 @@
-package kamkeel.npcaw.mixin.impl;
+package kamkeel.npcaw.mixin.impl.client;
 
 import net.minecraft.entity.Entity;
 import noppes.npcs.entity.EntityCustomNpc;

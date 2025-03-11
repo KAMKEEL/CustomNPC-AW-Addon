@@ -1,4 +1,4 @@
-package kamkeel.npcaw.mixin.impl;
+package kamkeel.npcaw.mixin.impl.client;
 
 import net.minecraft.client.renderer.entity.RendererLivingEntity;
 import net.minecraft.entity.EntityLivingBase;

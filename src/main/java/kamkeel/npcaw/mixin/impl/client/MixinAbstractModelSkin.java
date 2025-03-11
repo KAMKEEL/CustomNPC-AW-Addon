@@ -1,4 +1,4 @@
-package kamkeel.npcaw.mixin.impl;
+package kamkeel.npcaw.mixin.impl.client;
 
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
@@ -9,16 +9,12 @@ import noppes.npcs.api.handler.data.IFramePart;
 import noppes.npcs.client.ClientEventHandler;
 import noppes.npcs.controllers.data.FramePart;
 import noppes.npcs.entity.EntityCustomNpc;
-import noppes.npcs.entity.data.ModelScalePart;
-import org.lwjgl.opengl.GL11;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import riskyken.armourersWorkshop.api.common.skin.data.ISkinDye;
 import riskyken.armourersWorkshop.client.model.skin.AbstractModelSkin;
-import riskyken.armourersWorkshop.common.skin.data.Skin;
 
 @Mixin(AbstractModelSkin.class)
 public abstract class MixinAbstractModelSkin extends ModelBiped {
